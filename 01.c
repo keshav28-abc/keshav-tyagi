@@ -1,0 +1,22 @@
+//Program of selection sort
+#include<stdio.h>
+int main(){
+    int arr[20] = {1,9,6,8,2};
+    int min,i,j,temp;
+    for(i=0;i<4;i++){
+        min=i;
+        for(j=i+1;j<5;j++){
+            if (arr[j]<arr[min]){
+                min=j;
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+        }
+    printf("sorted array: ");
+    for(i=0;i<5;i++){
+        printf("%d ",arr[i]);
+    }
+    return 0;
+}
