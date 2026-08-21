@@ -1,31 +1,36 @@
 #include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
 
 int main(){
-    int arr[15],n,pos;
-    printf("Emter the numbers: ");
-    scanf("%d",&n);
-    
-    printf("Enter the elements: \n");
-    for(int i = 0 ;i < n ;i++){
-        scanf("%d",&arr[i]);
-    }
-    for(int i=0;i<n;i++){
-        printf("%d",arr[i]);
-    }
-    printf("\nEnter the position of delection(1 to %d): ",n);
-    scanf("%d",&pos);
+    struct node *head = NULL, *temp = NULL, *new = NULL;
+    int ch;
 
-    if(pos < 1 || pos > n)
-    {
-        printf("Invalide choice");
-        return 0;
+    do{
+        //Creatint new NODE:
+        new = (struct node*)malloc(sizeof(struct node*));
+
+        printf("Enter the elements to be insert: ");
+        scanf("%d",&new->data);
+
+        new->next = NULL;
+        if (head == NULL){
+            head = new;
+            temp = new;
+        }else{
+            temp->next=new;
+            temp=temp->next;
+        }
+        printf("Do you want to add more new data in your node: ");
+        scanf("%d",&ch);
+    } while(ch==1);
+    struct node *p;
+    p=head;
+    while(p!=NULL){
+        printf("%d",p->data);
+        p=p->next;
     }
-    for(int i=pos-1;i<n-1;i++){
-        arr[i]=arr[i+1];
-    }
-    n--;
-    for(int i=0;i<n;i++){
-        printf("%d",arr[i]);
-    }
-    return 0;
 }
